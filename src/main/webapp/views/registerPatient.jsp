@@ -16,29 +16,26 @@
     <form class="mt-3" action="/handlePatientRegister" method="post">
         <div class="mb-3">
             <%--                <label for="email" class="form-label">Email address</label>--%>
-            <input type="number" name="id" value="1" hidden="hidden" class="form-control" id="id">
+            <input type="number" name="id" value="${user.id}" hidden="hidden" class="form-control" id="id">
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
-            <input type="email"  class="form-control" name="email" id="email" readonly>
+            <input type="email"  class="form-control" value="${user.email}" name="email" id="email" readonly>
         </div>
         <div class="mb-3">
             <label for="name" class="form-label">Full Name</label>
             <input type="text" name="name" class="form-control" id="name">
         </div>
 
-<%--        <div class="mb-3">--%>
-<%--            <label>Select Gender </label>--%>
-<%--            <br>--%>
-<%--            <div class="form-check form-check-inline">--%>
-<%--                <input class="form-check-input" type="radio" name="gender" id="male" value="Male" checked>--%>
-<%--                <label class="form-check-label" for="male">Male</label>--%>
-<%--            </div>--%>
-<%--            <div class="form-check form-check-inline">--%>
-<%--                <input class="form-check-input" type="radio" name="gender" id="female" value="Female">--%>
-<%--                <label class="form-check-label" for="female">Female</label>--%>
-<%--            </div>--%>
-<%--        </div>--%>
+        <div class="mb-3">
+            <label for="gender">
+                <select class="form-select" id="gender" name="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </label>
+        </div>
         <div class="mb-3">
             <label for="dob" class="form-label">Date Of Birth</label>
             <input type="date" class="form-control" name="dob" id="dob">

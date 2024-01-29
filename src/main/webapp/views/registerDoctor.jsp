@@ -14,14 +14,14 @@
         <h1 class="text-center">Add Details Information</h1>
 
 
-        <form class="mt-3" action="/registerDoctor" method="post">
+        <form class="mt-3" action="/handleDoctorRegister" method="post">
             <div class="mb-3">
                 <%--                <label for="email" class="form-label">Email address</label>--%>
-                <input type="number" name="id" value="1" hidden="hidden" class="form-control" id="id">
+                <input type="number" name="id" value="${user.id}" hidden="hidden" class="form-control" id="id">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" name="email" id="email" readonly>
+                <input type="email" class="form-control" value="${user.email}" name="email" id="email" readonly>
             </div>
             <div class="mb-3">
                 <label for="name" class="form-label">Full Name</label>
