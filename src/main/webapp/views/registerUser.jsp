@@ -6,13 +6,17 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>registration</title>
+    <style>
+        .main{
+            background-image: url("images/doctor-banner.jpg");
+        }
+    </style>
 </head>
 <body>
 <%@include file="all_js_css.jsp"%>
 
-<div class="container mt-5">
+<div class="main container mt-5 ">
     <h1 class="text-center">Register here</h1>
-
 
     <form class="mt-3" action="/handleUserRegister" method="post">
         <div class="mb-3">
