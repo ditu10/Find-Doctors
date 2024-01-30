@@ -5,6 +5,8 @@ import com.boot.finddoctors.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService{
     private UserRepository repository;
@@ -23,4 +25,8 @@ public class UserServiceImpl implements UserService{
         return repository.save(user);
     }
 
+    @Override
+    public List<User> findUserByEmail(String email) {
+        return null;
+    }
 }

@@ -3,19 +3,26 @@ package com.boot.finddoctors.controller;
 import com.boot.finddoctors.model.Doctor;
 import com.boot.finddoctors.model.Patient;
 import com.boot.finddoctors.model.User;
+import com.boot.finddoctors.service.DoctorService;
+import com.boot.finddoctors.service.PatientService;
 import com.boot.finddoctors.service.UserService;
-import com.boot.finddoctors.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class AuthController {
     private UserService userService;
+    @Autowired
+    private DoctorService doctorService;
+    @Autowired
+    private PatientService patientService;
 
     public UserService getUserService() {
         return userService;
@@ -40,22 +47,27 @@ public class AuthController {
     }
 
     @PostMapping("/handleDoctorRegister")
-    @ResponseBody
-    public String handleDoctorRegistration(@ModelAttribute Doctor doctor){
+    public String handleDoctorRegistration(@ModelAttribute Doctor doctor, Model model) {
         System.out.println(doctor);
-        return doctor.toString();
+        doctorService.save(doctor);
+        return "doctor";
     }
 
 
     @PostMapping("/handlePatientRegister")
-    @ResponseBody
-    public String handlePatientRegistration(@ModelAttribute Patient patient){
+    public String handlePatientRegistration(@ModelAttribute Patient patient, Model model){
         System.out.println(patient);
-        return patient.toString();
+        patientService.save(patient);
+        return "patient";
     }
 
     @PostMapping("/handleUserRegister")
     public String handleUserRegistration(@ModelAttribute User user, Model model){
+        List<User> users =  userService.findUserByEmail(user.getEmail());
+        System.out.println(users);
+        if(users.isEmpty()){
+            return "redirect:/registerUser";
+        }
         User res = userService.save(user);
         System.out.println(res);
         if(user.getRole() == 0){

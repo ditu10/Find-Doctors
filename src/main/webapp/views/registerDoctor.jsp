@@ -13,8 +13,8 @@
     <div class="container mt-5">
         <h1 class="text-center">Add Details Information</h1>
 
-
-        <form class="mt-3" action="/handleDoctorRegister" method="post">
+<%--        enctype="multipart/form-data"--%>
+        <form class="mt-3" action="/handleDoctorRegister" method="post" >
             <div class="mb-3">
                 <%--                <label for="email" class="form-label">Email address</label>--%>
                 <input type="number" name="id" value="${user.id}" hidden="hidden" class="form-control" id="id">
@@ -48,6 +48,11 @@
                 <label for="photo" class="form-label">Upload Your Profile Pic</label>
                 <input class="form-control" type="file" name="photo" id="photo">
             </div>
+
+<%--            <div class="mb-3">--%>
+<%--                <label for="photox" class="form-label">Upload Your Profile Pic</label>--%>
+<%--                <input class="form-control" type="file" accept="image/*" name="photox" id="photox">--%>
+<%--            </div>--%>
 
             <div class="text-center">
                 <button type="submit" class="btn btn-outline-primary">Save</button>
